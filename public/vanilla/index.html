@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Character encoding ensures proper text and symbol (₹) rendering -->
+  <meta charset="UTF-8">
+
+  <!-- Responsive viewport: optimizes display on mobile phones and desktops -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Webpage Title displayed on the browser tab -->
+  <title>Student Expense Tracker</title>
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Main Container: Centers the app on screen -->
+  <div class="container">
+
+    <!-- 1. Coloured Header Section -->
+    <header class="app-header">
+      <h1>🎓 Student Expense Tracker</h1>
+      <p class="subtitle">Track your daily college spending in Rupees (₹)</p>
+    </header>
+
+    <!-- 2. Form for Adding Expenses -->
+    <section class="form-container">
+      <form id="expense-form">
+
+        <!-- Input 1: Expense Name -->
+        <div class="form-group">
+          <label for="expense-name">Expense Name</label>
+          <input 
+            type="text" 
+            id="expense-name" 
+            placeholder="e.g., Canteen Lunch, Bus Pass, Notebook" 
+            required
+          >
+        </div>
+
+        <!-- Input 2: Amount in Rupees (₹) -->
+        <div class="form-group">
+          <label for="expense-amount">Amount (in ₹ Rupees)</label>
+          <div class="currency-input-wrapper">
+            <span class="currency-symbol">₹</span>
+            <input 
+              type="number" 
+              id="expense-amount" 
+              placeholder="e.g., 150" 
+              min="1" 
+              step="any" 
+              required
+            >
+          </div>
+        </div>
+
+        <!-- Input 3: Category Dropdown (Food, Travel, Books, Fun, Other) -->
+        <div class="form-group">
+          <label for="expense-category">Category</label>
+          <select id="expense-category" required>
+            <option value="" disabled selected>Select a category</option>
+            <option value="Food">🍔 Food</option>
+            <option value="Travel">🚌 Travel</option>
+            <option value="Books">📚 Books</option>
+            <option value="Fun">🎮 Fun</option>
+            <option value="Other">🏷️ Other</option>
+          </select>
+        </div>
+
+        <!-- Input 4: Date of Expense -->
+        <div class="form-group">
+          <label for="expense-date">Date</label>
+          <input 
+            type="date" 
+            id="expense-date" 
+            required
+          >
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" id="add-btn" class="btn-primary">
+          Add Expense
+        </button>
+
+      </form>
+    </section>
+
+    <!-- 3. Overall Total Amount Spent Card -->
+    <section class="total-section">
+      <div class="total-card">
+        <span class="total-label">Total Amount Spent:</span>
+        <span class="total-value">₹<span id="total-amount">0.00</span></span>
+      </div>
+    </section>
+
+    <!-- 4. NEW FEATURE: Category Spending Breakdown -->
+    <section class="breakdown-section">
+      <h3>Category Breakdown</h3>
+      <div class="category-breakdown-grid">
+        <div class="breakdown-card tag-food">
+          <span class="breakdown-label">🍔 Food</span>
+          <span class="breakdown-amount">₹<span id="breakdown-food">0.00</span></span>
+        </div>
+        <div class="breakdown-card tag-travel">
+          <span class="breakdown-label">🚌 Travel</span>
+          <span class="breakdown-amount">₹<span id="breakdown-travel">0.00</span></span>
+        </div>
+        <div class="breakdown-card tag-books">
+          <span class="breakdown-label">📚 Books</span>
+          <span class="breakdown-amount">₹<span id="breakdown-books">0.00</span></span>
+        </div>
+        <div class="breakdown-card tag-fun">
+          <span class="breakdown-label">🎮 Fun</span>
+          <span class="breakdown-amount">₹<span id="breakdown-fun">0.00</span></span>
+        </div>
+        <div class="breakdown-card tag-other">
+          <span class="breakdown-label">🏷️ Other</span>
+          <span class="breakdown-amount">₹<span id="breakdown-other">0.00</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Expense History List & NEW Filter Dropdown -->
+    <section class="list-section">
+      <div class="list-header">
+        <h2>Expense History</h2>
+
+        <!-- NEW FEATURE: Filter Dropdown to show only one category at a time -->
+        <div class="filter-wrapper">
+          <label for="filter-category">Filter:</label>
+          <select id="filter-category">
+            <option value="All">All Categories</option>
+            <option value="Food">🍔 Food</option>
+            <option value="Travel">🚌 Travel</option>
+            <option value="Books">📚 Books</option>
+            <option value="Fun">🎮 Fun</option>
+            <option value="Other">🏷️ Other</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Expense List -->
+      <ul id="expense-list" class="expense-list">
+        <!-- Expenses will be displayed here dynamically via script.js -->
+      </ul>
+
+      <!-- Placeholder message when no expenses are present -->
+      <p id="empty-message" class="empty-message">
+        No expenses recorded yet. Fill out the form above to add your first expense!
+      </p>
+    </section>
+
+  </div>
+
+  <!-- External JavaScript File -->
+  <script src="script.js"></script>
+
+</body>
+</html>
